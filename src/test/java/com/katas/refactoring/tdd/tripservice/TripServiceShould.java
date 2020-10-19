@@ -16,8 +16,6 @@ class TripServiceShould {
 
     private static final User NOT_LOGGED_USER = new User();
 
-    private List<Trip> trips;
-
     private User loggedUser = new User();
     private User friend = new User();
     private User nonFriend = new User();
@@ -31,7 +29,7 @@ class TripServiceShould {
         tripService = createTripService();
 
         //execute
-        assertThrows(UserNotLoggedInException.class, () -> tripService.getTripsByUser(NOT_LOGGED_USER));
+        assertThrows(UserNotLoggedInException.class, () -> tripService.getGivenFriendsTrips(NOT_LOGGED_USER));
     }
 
     @Test
@@ -42,7 +40,7 @@ class TripServiceShould {
         nonFriend.setFriends(asList(new User()));
 
         //execute
-        List<Trip> trips = tripService.getTripsByUser(nonFriend);
+        List<Trip> trips = tripService.getGivenFriendsTrips(nonFriend);
         assertEquals(0, trips.size());
     }
 
@@ -56,7 +54,7 @@ class TripServiceShould {
         friend.setFriends(asList(loggedUser));
 
         //execute
-        List<Trip> trips = tripService.getTripsByUser(friend);
+        List<Trip> trips = tripService.getGivenFriendsTrips(friend);
         assertEquals(2, trips.size());
     }
 
