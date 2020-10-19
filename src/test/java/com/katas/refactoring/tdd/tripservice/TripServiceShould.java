@@ -37,7 +37,7 @@ class TripServiceShould {
         //setup
         tripService = createTripService();
         nonFriend.setTrips(asList(new Trip()));
-        nonFriend.setFriends(asList(new User()));
+        nonFriend.addFriend(new User());
 
         //execute
         List<Trip> trips = tripService.getGivenFriendsTrips(nonFriend);
@@ -51,7 +51,7 @@ class TripServiceShould {
         loggedUser.setTrips(asList(new Trip()));
 
         friend.setTrips(asList(new Trip(), new Trip()));
-        friend.setFriends(asList(loggedUser));
+        friend.addFriend(loggedUser);
 
         //execute
         List<Trip> trips = tripService.getGivenFriendsTrips(friend);

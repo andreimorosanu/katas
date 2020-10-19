@@ -11,29 +11,18 @@ import java.util.List;
 public class TripService {
 
     public List<Trip> getGivenFriendsTrips(User user) throws UserNotLoggedInException {
-        List<Trip> tripList = new ArrayList<Trip>();
+
         User loggedUser = getLoggedUser();
 
         validateUserLoggedIn(loggedUser);
 
-        boolean isFriend = isFriend(user, loggedUser);
-        
+        boolean isFriend = user.isFriendWith(loggedUser);
+
         if (isFriend) {
-            tripList = findTripsForUser(user);
+            return findTripsForUser(user);
         }
-        return tripList;
+        return new ArrayList<>();
 
-    }
-
-    private boolean isFriend(User user, User loggedUser) {
-        boolean isFriend = false;
-        for (User friend : user.getFriends()) {
-            if (friend.equals(loggedUser)) {
-                isFriend = true;
-                break;
-            }
-        }
-        return isFriend;
     }
 
     private void validateUserLoggedIn(User loggedUser) {
