@@ -1,6 +1,8 @@
 # Random kata implementations
 Contents (implemented)
 - classic algorithms & data structures  
+    - Naive sort
+    - Merge sort
     - Quick sort
 - small design problems
 - TDD
