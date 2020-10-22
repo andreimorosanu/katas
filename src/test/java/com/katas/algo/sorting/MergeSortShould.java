@@ -10,9 +10,9 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 
-class QuickSortShould {
+class MergeSortShould {
 
-    private QuickSort quickSort = new QuickSort();
+    private SortingAlgorithm mergeSort = new MergeSort();
 
     private static Stream<Arguments> provideArraysForTest() {
 
@@ -28,13 +28,15 @@ class QuickSortShould {
     @MethodSource("provideArraysForTest")
     public void sortArrayInAscendingOrder(Integer[] inputArray) {
 
+        //setup
+        Integer[] sortedByJava = Arrays.copyOf(inputArray, inputArray.length);
+
         //execute
-        Integer[] sortedByAlgo = quickSort.sort(inputArray);
+        mergeSort.sort(inputArray);
 
         //verify
-        Integer[] sortedByJava = Arrays.copyOf(inputArray, inputArray.length);
         Arrays.sort(sortedByJava);
-        assertArrayEquals(sortedByJava, sortedByAlgo);
+        assertArrayEquals(sortedByJava, inputArray);
 
     }
 

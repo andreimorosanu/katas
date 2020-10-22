@@ -2,11 +2,11 @@ package com.katas.algo.sorting;
 
 import com.katas.utils.annotations.Contract;
 
-public class QuickSort implements SortingAlgorithm<Integer> {
+public class NaiveSort implements SortingAlgorithm<Integer> {
 
     @Override
     @Contract(message = "Mutates the given input")
-    public Integer[] sort(Integer[] input) {
+    public void sort(Integer[] input) {
 
         boolean swaped = true;
         while (swaped) {
@@ -21,7 +21,6 @@ public class QuickSort implements SortingAlgorithm<Integer> {
 
         }
 
-        return input;
     }
 
     private void swap(Integer[] input, int i, int j) {
