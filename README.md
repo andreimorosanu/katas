@@ -7,8 +7,9 @@ Contents (implemented)
 - small design problems
 - TDD
     - trip service - refactoring out of singleton and static call
-
-
+- Design exercises 
+    - Vending Machine
+        - Refer to Vending Machine Requirements And Notes.md 
 ## Ideas to implement
 #### Password rules checker 
     Variations
