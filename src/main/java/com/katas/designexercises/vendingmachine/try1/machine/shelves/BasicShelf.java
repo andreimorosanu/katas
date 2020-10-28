@@ -4,12 +4,11 @@ import com.katas.designexercises.vendingmachine.try1.inventory.Item;
 import com.katas.designexercises.vendingmachine.try1.machine.shelves.exceptions.ShelfException;
 
 import java.util.ArrayDeque;
-import java.util.Deque;
 
 public class BasicShelf implements Shelf {
 
     protected static final int maxCapacity = 10;
-    private Deque<Item> items = new ArrayDeque();
+    private final ArrayDeque<Item> items = new ArrayDeque<>();
 
     @Override
     public void stockItem(String name) {
