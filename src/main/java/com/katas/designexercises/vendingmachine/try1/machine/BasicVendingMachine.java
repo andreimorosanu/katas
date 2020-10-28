@@ -4,7 +4,6 @@ package com.katas.designexercises.vendingmachine.try1.machine;
 import com.katas.designexercises.vendingmachine.try1.machine.shelves.BasicShelf;
 import com.katas.designexercises.vendingmachine.try1.machine.shelves.Shelf;
 import com.katas.designexercises.vendingmachine.try1.machine.shelves.ShelvesStoker;
-import com.katas.designexercises.vendingmachine.try1.machine.shelves.ShelvesStokerImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,10 @@ public class BasicVendingMachine implements VendingMachine {
     private final ShelvesStoker shelvesStoker;
     private final PricingManager pricingManager;
 
-    public BasicVendingMachine() {
+    public BasicVendingMachine(ShelvesStoker shelvesStoker, PricingManager pricingManager) {
+
+        this.shelvesStoker = shelvesStoker;
+        this.pricingManager = pricingManager;
 
         shelves = new ArrayList<>();
         shelves.add(new BasicShelf());
@@ -24,22 +26,16 @@ public class BasicVendingMachine implements VendingMachine {
         shelves.add(new BasicShelf());
         shelves.add(new BasicShelf());
 
-        shelvesStoker = new ShelvesStokerImpl(shelves);
-        pricingManager = new PricingManagerImpl();
+        shelvesStoker.setShelves(shelves);
     }
 
     @Override
-    public void stockItem(String item, String amount, String shelf) {
-
-    }
-
-    @Override
-    public void stockItem(String item, String amount) {
+    public void stockItem(String item, String price) {
 
     }
 
     @Override
-    public void stockChange(String amount) {
+    public void stockChange(String changeAmount) {
 
     }
 
@@ -59,7 +55,7 @@ public class BasicVendingMachine implements VendingMachine {
     }
 
     @Override
-    public void buy(String item) {
+    public void selectItem(String item) {
 
     }
 }

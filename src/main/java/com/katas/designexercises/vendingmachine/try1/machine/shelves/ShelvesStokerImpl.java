@@ -4,15 +4,14 @@ import java.util.List;
 
 public class ShelvesStokerImpl implements ShelvesStoker {
 
-
     private List<Shelf> shelves;
-
-    public ShelvesStokerImpl(List<Shelf> shelves) {
-
-        this.shelves = shelves;
-    }
 
     public void addItem(String item) {
 
+    }
+
+    @Override
+    public void setShelves(List<Shelf> shelves) {
+        this.shelves = List.copyOf(shelves);
     }
 }
