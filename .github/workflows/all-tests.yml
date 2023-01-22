@@ -1,12 +1,8 @@
 name: Run all tests
 on: [ push ]
 jobs:
-  run-all-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v3
-      - name: Run unit tests
-        uses: ./tests/unit-tests.yml
-      - name: Run integration tests
-        uses: ./tests/integration-tests.yml
+  run-unit-tests:
+    uses: ./tests/unit-tests.yml
+  run-integration-tests:
+    uses: ./tests/integration-tests.yml
+
