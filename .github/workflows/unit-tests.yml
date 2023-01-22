@@ -18,9 +18,10 @@ jobs:
       - name: Run tests
         run: mvn -e test
       - name: Create report
-        run: mvn -e surefire-report:report
-      #  try anonymous run
-      - run: ls -lhat
+        if: always()
+        run: |
+          mvn -e surefire-report:report
+          ls -lhat
       - name: Archive test report
         if: always()
         uses: actions/upload-artifact@v3
