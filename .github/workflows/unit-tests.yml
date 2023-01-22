@@ -14,14 +14,14 @@ jobs:
           architecture: x64
           cache: maven
       - name: Build code
-        run: mvn clean -e install -DskipTests=true
+        run: mvn clean -e install -DskipTests=true --no-transfer-progress
       - name: Run tests
-        run: mvn -e test
+        run: mvn -e test --no-transfer-progress
       - name: Create report
         if: always()
         run: |
-          mvn -e surefire-report:report
-          ls -lhat
+          mvn -e surefire-report:report -DskipTests=true --no-transfer-progress
+          echo "Example of multiline run"
       - name: Archive test report
         if: always()
         uses: actions/upload-artifact@v3

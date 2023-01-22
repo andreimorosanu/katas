@@ -1,5 +1,14 @@
 name: Run all tests
-on: [ push ]
+on:
+  workflow_dispatch:
+    branches:
+      - '*'
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '*'
 jobs:
   run-unit-tests:
     uses: ./.github/workflows/unit-tests.yml
