@@ -1,0 +1,14 @@
+name: Trigger all jobs
+on:
+  workflow_dispatch:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+jobs:
+  run-tests:
+    uses: ./.github/workflows/all-tests.yml
+  publish:
+    needs: run-tests
+    uses: ./.github/workflows/publish.yml
