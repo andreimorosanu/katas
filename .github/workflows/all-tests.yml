@@ -3,9 +3,6 @@ on:
   workflow_dispatch:
     branches:
       - '*'
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - '*'
