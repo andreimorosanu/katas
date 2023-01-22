@@ -3,7 +3,7 @@ on:
   workflow_run:
     #    Does this really take into account all the workflows? Doc suggests only one must succeed
     workflows: [ Run all tests, Run all unit tests ]
-    branches: *
+    branches: '*'
     types:
       - completed
 
