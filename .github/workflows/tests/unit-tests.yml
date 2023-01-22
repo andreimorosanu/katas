@@ -1,6 +1,6 @@
 name: Run all unit tests
 run-name: Run all unit tests
-on: [ push, manual ]
+on: [ push ]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
