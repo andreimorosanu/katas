@@ -18,11 +18,12 @@ jobs:
       - name: Run tests
         run: mvn -e test
       - name: Create report
-        run: mvn -e surefire-report:report
+        run:
+          - mvn -e surefire-report:report
+          - ls -lhat
       - name: Archive test report
         if: always()
         uses: actions/upload-artifact@v3
-        run: ls -lhat
         with:
           name: test-report
           path: target/site/surefire-report.html
