@@ -2,7 +2,7 @@ name: Run all tests
 on: [ push ]
 jobs:
   run-unit-tests:
-    uses: ./tests/unit-tests.yml
+    uses: ./.github/workflows/tests/unit-tests.yml
   run-integration-tests:
-    uses: ./tests/integration-tests.yml
+    uses: ./.github/workflows/tests/integration-tests.yml
 
