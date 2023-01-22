@@ -9,4 +9,4 @@ jobs:
       - name: Run unit tests
         uses: ./tests/unit-tests.yml
       - name: Run integration tests
-        uses: ./integration-tests.yml
+        uses: ./tests/integration-tests.yml
