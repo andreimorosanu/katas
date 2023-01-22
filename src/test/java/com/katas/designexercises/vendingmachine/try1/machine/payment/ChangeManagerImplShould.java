@@ -51,7 +51,7 @@ class ChangeManagerImplShould {
 
 
     @Test
-    @Disabled("")
+    @Disabled("To check if jobs work")
     public void validateNotEnoughChange() {
         //setup
         ChangeManager changeManager = new ChangeManagerImpl();
