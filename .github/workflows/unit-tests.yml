@@ -16,8 +16,9 @@ jobs:
       - name: Build code
         run: mvn clean -e install -DskipTests=true
       - name: Run tests
-        run: mvn test surefire-report:report-only
+        run: mvn -e test surefire-report:report-only
       - name: Archive test report
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: test-report
