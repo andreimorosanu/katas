@@ -1,5 +1,5 @@
 name: Run all tests
-on: [ push ]
+on: [ pull_request, workflow_dispatch ]
 jobs:
   run-unit-tests:
     uses: ./.github/workflows/unit-tests.yml
