@@ -16,10 +16,13 @@ jobs:
       - name: Build code
         run: mvn clean -e install -DskipTests=true
       - name: Run tests
-        run: mvn -e test surefire-report:report-only
+        run: mvn -e test
+      - name: Create report
+        run: mvn -e surefire-report:report
       - name: Archive test report
         if: always()
         uses: actions/upload-artifact@v3
+        run: ls -lhat
         with:
           name: test-report
           path: target/site/surefire-report.html
