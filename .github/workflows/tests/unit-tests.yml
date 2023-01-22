@@ -2,7 +2,7 @@ name: Run all unit tests
 run-name: Run all unit tests
 on: [ push, workflow_call ]
 jobs:
-  check-bats-version:
+  unit-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +18,7 @@ jobs:
       - name: Run tests
         run: mvn test surefire-report:report-only
       - name: Archive test report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test-report
           path: target/site/surefire-report.html
