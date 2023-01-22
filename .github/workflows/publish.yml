@@ -2,14 +2,14 @@ name: Publish artifacts
 on:
   workflow_run:
     #    Does this really take into account all the workflows? Doc suggests only one must succeed
-    workflows: [ Run all tests, Run all unit tests ]
+    workflows: [ "Run all tests" ]
     branches:
       - '*'
     types:
       - completed
 
 jobs:
-  publish-artifacts-after tests:
+  publish-artifacts-after-tests:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
