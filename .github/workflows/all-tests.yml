@@ -9,8 +9,6 @@ on:
 jobs:
   run-unit-tests:
     uses: ./.github/workflows/unit-tests.yml
-  publish-after:
-    uses: ./.github/workflows/publish.yml
 #  run-integration-tests:
 #    uses: ./.github/workflows/integration-tests.yml
 
