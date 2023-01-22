@@ -20,7 +20,7 @@ jobs:
       - name: Create report
         if: always()
         run: |
-          mvn -e surefire-report:report --no-transfer-progress
+          mvn -e surefire-report:report -DskipTests=true --no-transfer-progress
           echo "Example of multiline run"
       - name: Archive test report
         if: always()
