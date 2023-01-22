@@ -1,0 +1,14 @@
+name: Publish artifacts
+on:
+  workflow_run:
+    workflows: [ Run all tests, Run all unit tests ]
+    branches: *
+    types:
+      - complete
+
+jobs:
+  publish-artifacts-after tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish artifacts
+        run: echo "Pipeline example triggered by other finishing pipelines"
