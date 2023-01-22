@@ -1,7 +1,8 @@
 package com.katas.designexercises.vendingmachine.try1.machine;
 
 
-import com.katas.designexercises.vendingmachine.try1.machine.pricing.PricingManager;
+import com.katas.designexercises.vendingmachine.try1.currency.Money;
+import com.katas.designexercises.vendingmachine.try1.machine.payment.ChangeManager;
 import com.katas.designexercises.vendingmachine.try1.machine.shelves.BasicShelf;
 import com.katas.designexercises.vendingmachine.try1.machine.shelves.Shelf;
 import com.katas.designexercises.vendingmachine.try1.machine.shelves.ShelvesStoker;
@@ -13,15 +14,15 @@ public class BasicVendingMachine implements VendingMachine {
 
     private final List<Shelf> shelves;
     private final ShelvesStoker shelvesStoker;
-    private final PricingManager pricingManager;
+    private final ChangeManager changeManager;
 
     // TODO: 10/28/2020 can refactor this so that there are 2 actual object implementation
     boolean purchaseInProgress = false;
 
-    public BasicVendingMachine(ShelvesStoker shelvesStoker, PricingManager pricingManager) {
+    public BasicVendingMachine(ShelvesStoker shelvesStoker, ChangeManager changeManager) {
 
         this.shelvesStoker = shelvesStoker;
-        this.pricingManager = pricingManager;
+        this.changeManager = changeManager;
 
         shelves = new ArrayList<>();
         shelves.add(new BasicShelf());
@@ -45,10 +46,17 @@ public class BasicVendingMachine implements VendingMachine {
         if (purchaseInProgress) {
             throw new VendingOperationException(VendingOperationException.Reason.CANNOT_STOCK_WHILE_PURCHASE_IN_PROGRESS);
         }
+
+        changeManager.stockChange(changeAmount);
     }
 
     @Override
-    public void cancelPurchase() {
+    public List<Money> cancelPurchase() {
+
+        purchaseInProgress = false;
+        List<Money> change = changeManager.cancelBuy();
+
+        return change;
 
     }
 
@@ -67,6 +75,8 @@ public class BasicVendingMachine implements VendingMachine {
         if (!purchaseInProgress) {
             throw new VendingOperationException(VendingOperationException.Reason.NO_PURCHASE_IN_PROGRESS);
         }
+
+        changeManager.addMoneyForPurchase(amount);
     }
 
     @Override

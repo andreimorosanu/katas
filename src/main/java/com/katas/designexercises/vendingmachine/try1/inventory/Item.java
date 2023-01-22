@@ -13,6 +13,11 @@ public class Item {
         this.name = name;
     }
 
+    public Item(String name, Money pricePerUnit) {
+        this.name = name;
+        this.pricePerUnit = pricePerUnit;
+    }
+
 
     public String getName() {
         return name;
