@@ -7,8 +7,7 @@ on:
     branches:
       - '*'
   workflow_call:
-    branches:
-      - '*'
+
 jobs:
   run-unit-tests:
     uses: ./.github/workflows/unit-tests.yml
